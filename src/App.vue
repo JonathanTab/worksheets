@@ -1,11 +1,13 @@
-<script setup lang="ts">
-import Ledger from './Ledger.vue'
-</script>
-
 <template>
-  <Ledger></Ledger>
+    <div id="app">
+        <Spreadsheet />
+    </div>
 </template>
 
-<style scoped>
+<script setup lang="ts">
+import Spreadsheet from './components/Spreadsheet.vue';
+</script>
 
+<style>
+/* Your app's global styles */
 </style>

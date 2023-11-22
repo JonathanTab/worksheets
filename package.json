@@ -9,7 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.4"
+    "@syncedstore/core": "^0.6.0",
+    "vue": "^3.3.4",
+    "y-websocket": "^1.5.0",
+    "yjs": "^13.6.10"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
