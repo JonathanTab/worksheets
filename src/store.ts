@@ -8,8 +8,10 @@ import { DocTypeDescription } from "@syncedstore/core/types/doc";
 
 export interface Cell {
   value: string;
+  rendered?: string;
   style: Object;
   override?: boolean;
+  autocomplete?: string;
 }
 
 export interface Row {
@@ -64,7 +66,10 @@ export const store = syncedStore<SpreadsheetStore>({
 export const state = reactive({
   sidebarHidden: true,
   sidebarWidth: 200,
-  currentPageIndex: 0,
+  selection: { x: null, y: null },
+  currentPageId: 0,
+  //This is a number so we can deal with multiple cells editing
+  editing: 0
 })
 
 

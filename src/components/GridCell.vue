@@ -1,19 +1,43 @@
 <template>
-    <td :style="defaultStyle, cell.style">
-        <input v-model="cell.value" @input="handleInput" />
+    <td v-on:dblclick="startEditing" :style="[defaultStyle, cell.style]" :class="{ 'selected': selected }">
+        <input ref="input" v-on-click-outside="stopEditing" v-if="editing" v-model="cell.value" @input="handleInput" />
+        <span v-else>{{ cell.rendered }}</span>
     </td>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, reactive, ref, watch } from 'vue';
+import { vOnClickOutside } from '@vueuse/components'
+import { useFocus } from '@vueuse/core'
+import { state } from '../store';
 
+const input = ref()
 const props = defineProps({
     cell: Object,
+    selected: Boolean,
     rowIndex: Number,
     cellIndex: Number,
 });
+const editing = ref(false);
 
 const emits = defineEmits(['update-cell']);
+
+
+
+function startEditing() {
+    if (editing.value === false) {
+        state.editing++
+        editing.value = true
+        useFocus(input, { initialValue: true })
+    }
+}
+function stopEditing() {
+    if (editing.value === true) {
+        editing.value = false
+        state.editing--;
+    }
+}
+
 
 const defaultStyle = ref({
     backgroundColor: 'white',
@@ -50,7 +74,15 @@ const handleInput = (event) => {
 </script>
 
 <style>
+.selected {
+    border: 2px dashed yellow !important;
+
+}
+
 input {
+    background-color: white;
+    color: black;
+    font: default;
     width: 100%;
     padding: 0;
     /* Consider removing padding to ensure border styles are visible */

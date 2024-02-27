@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { store, state } from '../store';
+import { store, state } from '../../store';
 import PageNavigation from './PageNavigation.vue';
 </script>
 

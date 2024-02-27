@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { store, state, Page } from '../store';
+import { store, state, Page } from '../../store';
 
 let startX = ref(0);
 let startWidth = ref(0);

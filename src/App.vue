@@ -2,20 +2,20 @@
     <div id="app">
         <TopToolbar />
         <div class="main-container">
-            <Grid :style="{ marginRight: state.sidebarWidth + 'px' }"> </Grid>
+            <WorksheetsApp> </WorksheetsApp>
             <Sidebar v-show="!state.sidebarHidden" />
         </div>
-        <BottomToolbar />
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import Grid from './components/Grid.vue'
-import TopToolbar from './components/TopToolbar.vue';
-import BottomToolbar from './components/BottomToolbar.vue';
-import Sidebar from './components/Sidebar.vue';
+import WorksheetsApp from './components/WorksheetsApp.vue'
+import TopToolbar from './components/chrome/TopToolbar.vue';
+
+import Sidebar from './components/chrome/sidebar.vue';
 import { state } from './store';
+
 
 </script>
 

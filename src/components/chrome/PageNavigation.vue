@@ -2,7 +2,7 @@
     <div class="navigation-container">
         <ul class="page-navigation">
             <li v-for="(page, index) in store.pages" :key="`page-${index}`"
-                :class="{ active: index === state.currentPageIndex }" @click="selectPage(index)"
+                :class="{ active: index === state.currentPageId }" @click="selectPage(index)"
                 @dblclick="enableEditing(index)">
                 <template v-if="editingIndex === index">
                     <input v-model="editingName" @blur="savePageName(index)" @keyup.enter="savePageName(index)"
@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { PropType, ref } from 'vue';
-import { store, state, Page } from '../store';
+import { store, state, Page } from '../../store';
 
 const props = defineProps({
     pages: Array as PropType<Page[]>,
@@ -31,7 +31,7 @@ const editingName = ref('');
 
 const selectPage = (pageIndex) => {
     if (editingIndex.value === -1) {
-        state.currentPageIndex = pageIndex
+        state.currentPageId = pageIndex
     }
 };
 

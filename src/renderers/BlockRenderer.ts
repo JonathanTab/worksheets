@@ -1,6 +1,6 @@
 // BlockRenderer.ts
 
-import { Block, Cell } from './store';
+import { Block, Cell } from '../store';
 
 export function renderBlock(block: Block, data: Cell[][]) {
   const { startIndexY, startIndexX } = block;
